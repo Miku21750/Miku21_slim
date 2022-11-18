@@ -1,0 +1,75 @@
+{% extends "/layout/log.html" %}
+{# If login #}
+
+
+{% block log %}
+<section class="" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        {% if mode == "login"%}
+                        {% set title = "Login" %}
+                        {% set mode = "Login" %}
+                        {% set reverseMode = "Register" %}
+
+                        <h3 class="mb-5">{{ mode }}</h3>
+                        <form action="/login" method="post">
+                            <label class="form-label" for="user">Username</label>
+                            <input type="user" id="user" name="user" class="form-control " />
+                            <label class="form-label" for="pass">Password</label>
+                            <input type="password" id="pass" name="pass" class="form-control " />
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">{{mode}}</button>
+                        </form>
+                        <hr class="my-4">
+                        <div class="text-center mb-6">
+                            Not a member? <a href="/{{ reverseMode|lower }}">{{ reverseMode }}</a>
+                        </div>
+                        {% elseif mode == "register" %}
+                        {% set title = "Register" %}
+                        {% set mode = "Register" %}
+                        {% set reverseMode = "Login" %}
+                        <h3 class="mb-5">{{ mode }}</h3>
+                        <form action="/register" method="post">
+                            <label class="form-label" for="nameF">First Name</label>
+                            <input type="firstName" id="nameF" name="firstName" class="form-control " />
+
+                            <label class="form-label" for="nameL">Last Name</label>
+                            <input type="lastName" id="nameL" name="lastName" class="form-control " />
+
+                            <label for="gender">Gender</label>
+                            <select name="gender" class="form-select" id="gender">
+                                <option value="#" selected>Pilih Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            <label class="form-label" for="user">Username</label>
+                            <input type="lastName" id="user" name="user" class="form-control " />
+                            <label class="form-label" for="typePasswordX-2">Password</label>
+                            <input type="password" id="typePasswordX-2" name="pass" class="form-control " />
+                            <br>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">{{mode}}</button>
+                        </form>
+                        <hr class="my-4">
+                        <div class="text-center mb-6">
+                            Not a member? <a href="/{{ reverseMode|lower }}">{{ reverseMode }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% if notValidate == true %}
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Not Validate',
+        text: 'Username or Password is not validate',
+    })
+</script>
+{% endif %}
+
+{% endblock log %}
