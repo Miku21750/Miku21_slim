@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTER</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</head>
+<script>
+    // <?php
+    //     if(!isset($_SESSION['name'])){
+    //         echo "alert('kamu belum login')";
+    //     }
+    // ?>
+</script>
+<body>
+<div class="rain front-row"></div>
+  <div class="rain back-row"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto py-4 px-0">
+            <div class="card p-0">
+                <div class="card-title text-center">
+                    <h5 class="mt-5">Register</h5> <small class="para">Register to use the cool feature.</small>
+                </div>
+                <form class="signup" action="/register" method="post">
+                    <div class="form-group"><input type="text" name="name" class="form-control" placeholder="Username"></div>
+                    <div class="form-group"><input type="password" name="pass" class="form-control" placeholder="password"></div> <button type="submit" class="btn btn-primary">Register</button>
+                    <div class="row">
+                        <div class="col-6 col-sm-6">
+                            <a href="#"><p class="text-left pt-2 ml-1">Already Have an account?</p></a>
+                        </div>
+                        <div class="col-6 col-sm-6">
+                           <a href="/login"> <p class="text-right pt-2 mr-1">Log in Now</p></a>
+                        </div>
+                    </div>
+                     <!-- <span class="text-center">Or</span> <span class="text-center pt-3">Login Using</span>
+                    <div class="row">
+                        <div class="d-flex mx-auto pt-1 pb-3"> <a href="#"><i class="fab fa-facebook"></i></a> <a href="#"><i class="fab fa-twitter"></i></a> <a href="#"><i class="fab fa-linkedin"></i></a> </div>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<svg class="svg-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+          </defs>
+          <g class="svg-waves__parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0"></use>
+            <use xlink:href="#gentle-wave" x="48" y="3"></use>
+            <use xlink:href="#gentle-wave" x="48" y="5"></use>
+            <use xlink:href="#gentle-wave" x="48" y="7"></use>
+          </g>
+        </svg>
+        
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<script src="asset/js/index.js"></script>
+<!-- <script>
+    alert('silahkan login')
+</script> -->
+</body>
+</html>

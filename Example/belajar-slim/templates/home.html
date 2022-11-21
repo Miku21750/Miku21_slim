@@ -1,0 +1,69 @@
+{% extends "/layout/master.html" %}
+{% set title = "Halaman Utama   -Twig" %}
+{% block content %}
+<!-- Looping -->
+<!-- {% for d in data %}
+    <p>{{ d }}</p>
+{% endfor %} -->
+
+<!-- foreach -->
+<!-- {% for key, m in data %}
+ <p>{{ key }}: {{ m }}</p>
+{% endfor %} -->
+
+<!-- calling array -->
+<!-- {{ data[0] }} -->
+
+
+{% set nama = 'Gamelab\nIndo' %}
+{# Lower Function #}
+{# {{ nama|lower }}  #}
+
+{# Function Upper #}
+{# {{ nama|upper}} #}
+
+{# Agar \n digunakan #}
+{# {{nama|nl2br}} #}
+
+{# Date function #}
+{# Date now #}
+{# informasi lengkap #}
+{# {{ "now"|date(null,'Asia/Jakarta')}} #}
+{# berformat #}
+{# {{ "now"|date("m/d/Y",'Asia/Jakarta')}} #}
+{# Fungsi Khusus #}
+{# {{ "2021-04-09"|date("d/m/Y","Asia/Jakarta")}} #}
+
+{# Include (tidak function) #}
+{# {% include "index.phtml" %} #}
+
+{# json encode #}
+
+{# Data slice #}
+{% set arr = [2,10,17,1,19,57] %}
+{# {% for a in arr|slice(2, 3) %}
+    {{a}}
+{% endfor %}     #}
+{# alternatif #}
+{# {% for a in arr[2:3] %}
+    {{a}}
+{% endfor %} #}
+
+{# Data Length #}
+{# {{ arr|length}} #}
+{# {{"asu"|length}} #}
+
+{# {{ nama|upper|nl2br}} #}
+{# Penulisan salah : #}
+{# {{ nama|nl2br|upper}} #}
+
+<!-- Use  -->
+{# <h1>Halo {{ data.name }}</h1>
+<p>I'm {{ data.usia }}.old</p> #}
+{% endblock %}
+{# KOMENT #}
+{# Baris 1
+    Baris 2
+    Baris 3 #}
+
+    
