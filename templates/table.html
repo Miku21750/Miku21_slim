@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+</head>
+
+<body>
+    <table class="table table-striped table-hover" id="demo">
+
+
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Customer ID</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            <tr id="3/del">
+                <th scope="row">1</th>
+                <td id="user_id" hidden>3</td>
+                <td>C00001</td>
+                <td>Micheal</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="3">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="3">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="3/del">
+                <th scope="row">2</th>
+                <td id="user_id" hidden>3</td>
+                <td>C00002</td>
+                <td>Bolt</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="3">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="3">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="11/del">
+                <th scope="row">3</th>
+                <td id="user_id" hidden>11</td>
+                <td>C00003</td>
+                <td>Martin</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="11">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="11">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="7/del">
+                <th scope="row">4</th>
+                <td id="user_id" hidden>7</td>
+                <td>C00004</td>
+                <td>Winston</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="7">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="7">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="9/del">
+                <th scope="row">5</th>
+                <td id="user_id" hidden>9</td>
+                <td>C00005</td>
+                <td>Sasikant</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="9">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="9">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="11/del">
+                <th scope="row">6</th>
+                <td id="user_id" hidden>11</td>
+                <td>C00006</td>
+                <td>Shilton</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="11">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="11">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="5/del">
+                <th scope="row">7</th>
+                <td id="user_id" hidden>5</td>
+                <td>C00007</td>
+                <td>Ramanathan</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="5">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="5">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="11/del">
+                <th scope="row">8</th>
+                <td id="user_id" hidden>11</td>
+                <td>C00008</td>
+                <td>Karolina</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="11">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="11">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="9/del">
+                <th scope="row">9</th>
+                <td id="user_id" hidden>9</td>
+                <td>C00009</td>
+                <td>Ramesh</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="9">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="9">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="12/del">
+                <th scope="row">10</th>
+                <td id="user_id" hidden>12</td>
+                <td>C00010</td>
+                <td>Charles</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="12">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="12">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="5/del">
+                <th scope="row">11</th>
+                <td id="user_id" hidden>5</td>
+                <td>C00011</td>
+                <td>Sundariya</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="5">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="5">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="6/del">
+                <th scope="row">12</th>
+                <td id="user_id" hidden>6</td>
+                <td>C00012</td>
+                <td>Steven</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="6">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="6">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="2/del">
+                <th scope="row">13</th>
+                <td id="user_id" hidden>2</td>
+                <td>C00013</td>
+                <td>Holmes</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="2">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="2">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="8/del">
+                <th scope="row">14</th>
+                <td id="user_id" hidden>8</td>
+                <td>C00014</td>
+                <td>Rangarappa</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="8">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="8">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="2/del">
+                <th scope="row">15</th>
+                <td id="user_id" hidden>2</td>
+                <td>C00015</td>
+                <td>Stuart</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="2">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="2">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="1/del">
+                <th scope="row">16</th>
+                <td id="user_id" hidden>1</td>
+                <td>C00016</td>
+                <td>Venkatpati</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="1">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="1">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="1/del">
+                <th scope="row">17</th>
+                <td id="user_id" hidden>1</td>
+                <td>C00017</td>
+                <td>Srinivas</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="1">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="1">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="7/del">
+                <th scope="row">18</th>
+                <td id="user_id" hidden>7</td>
+                <td>C00018</td>
+                <td>Fleming</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="7">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="7">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="5/del">
+                <th scope="row">19</th>
+                <td id="user_id" hidden>5</td>
+                <td>C00019</td>
+                <td>Yearannaidu</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="5">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="5">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="3/del">
+                <th scope="row">20</th>
+                <td id="user_id" hidden>3</td>
+                <td>C00020</td>
+                <td>Albert</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="3">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="3">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="7/del">
+                <th scope="row">21</th>
+                <td id="user_id" hidden>7</td>
+                <td>C00021</td>
+                <td>Jacks</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="7">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="7">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="9/del">
+                <th scope="row">22</th>
+                <td id="user_id" hidden>9</td>
+                <td>C00022</td>
+                <td>Avinash</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="9">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="9">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="10/del">
+                <th scope="row">23</th>
+                <td id="user_id" hidden>10</td>
+                <td>C00023</td>
+                <td>Karl</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="10">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="10">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="10/del">
+                <th scope="row">24</th>
+                <td id="user_id" hidden>10</td>
+                <td>C00024</td>
+                <td>Cook</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="10">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="10">Delete Data</button>
+                </td>
+            </tr>
+
+            <tr id="4/del">
+                <th scope="row">25</th>
+                <td id="user_id" hidden>4</td>
+                <td>C00025</td>
+                <td>Ravindran</td>
+                <td>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore"
+                        data-bs-whatever="4">
+                        View More
+                    </button>
+                    <button class="btn btn-danger delete_items" id="4">Delete Data</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<script>
+    $(document).ready(function () {
+    $('#example').DataTable({
+        pagingType: 'full_numbers',
+    });
+});
+</script>
+</html>

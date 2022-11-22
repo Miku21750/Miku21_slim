@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+    <head>
+        <title>DataTables AJAX Pagination with search and sort - PHP</title>
+        <!-- Datatable CSS -->
+        <link href='DataTables/datatables.min.css' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery Library -->
+        <script src="jquery-3.3.1.min.js"></script>
+        
+        <!-- Datatable JS -->
+        <script src="DataTables/datatables.min.js"></script>
+        
+    </head>
+    <body >
+
+        <div >
+            <!-- Table -->
+            <table id='empTable' class='display dataTable'>
+                <thead>
+                <tr>
+                    <th>Employee name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
+                    <th>City</th>
+                </tr>
+                </thead>
+                
+            </table>
+        </div>
+        
+        <!-- Script -->
+        <script>
+        $(document).ready(function(){
+            $('#empTable').DataTable({
+                'processing': true,
+                'serverSide': true,
+                'serverMethod': 'post',
+                'ajax': {
+                    'url':'ajaxfile.php'
+                },
+                'columns': [
+                    { data: 'emp_name' },
+                    { data: 'email' },
+                    { data: 'gender' },
+                    { data: 'salary' },
+                    { data: 'city' },
+                ]
+            });
+        });
+        </script>
+    </body>
+
+</html>

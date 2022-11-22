@@ -1,0 +1,24 @@
+{% block viewMore_js %}
+const modalTitle = viewMore.querySelector('#judul')
+const custId = viewMore.querySelector('#cust_id')
+const custName = viewMore.querySelector('#cust_fullname')
+const cust_workingArea = viewMore.querySelector('#cust_workingArea')
+const cust_country = viewMore.querySelector('#cust_country')
+const cust_grade = viewMore.querySelector('#grade')
+const cust_amt = viewMore.querySelector('#cust_amt')
+const cust_phone = viewMore.querySelector('#cust_phone')
+const cust_agent = viewMore.querySelector('#cust_agent')
+
+modalTitle.textContent = `Data ${response[0].CUST_NAME}`
+console.log(response)
+custId.value = response[0].CUST_CODE
+custName.value = response[0].CUST_NAME
+cust_workingArea.value = response[0].WORKING_AREA
+cust_country.value = response[0].CUST_COUNTRY
+cust_grade.value = response[0].GRADE
+var msg = `Opening : ${response[0].OPENING_AMT}\nReceive : ${response[0].RECEIVE_AMT}\nPayment : ${response[0].PAYMENT_AMT}\nOutstanding : ${response[0].OUTSTANDING_AMT}`
+$("#cust_amt").popover({content: msg})
+cust_amt.setAttribute("data-bs-content",`Opening : ${response[0].OPENING_AMT}\nReceive : ${response[0].RECEIVE_AMT}\nPayment : ${response[0].PAYMENT_AMT}\nOutstanding : ${response[0].OUTSTANDING_AMT}`)
+cust_phone.value = response[0].PHONE_NO
+cust_agent.value = response[0].AGENT_NAME
+{% endblock viewMore_js %}

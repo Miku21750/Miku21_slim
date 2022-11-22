@@ -1,0 +1,167 @@
+{% block modal %}
+{% include "modal_viewMore.html" %}
+{% block viewMore %}
+  
+{% endblock viewMore %}
+{# Edit Modal #}
+<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="viewMoreLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="judul"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post" id="editForm">
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="user_id" class="col-form-label">ID</label>
+            </div>
+            <div class="col-1">
+              <label for="user_id" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control bg-light" id="user_id" readonly>
+            </div>
+          </div>
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="recipient-name" class="col-form-label">First name</label>
+            </div>
+            <div class="col-1">
+              <label for="recipient-name" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control" id="user_firstname">
+            </div>
+          </div>
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="recipient-name" class="col-form-label">Last name</label>
+            </div>
+            <div class="col-1">
+              <label for="recipient-name" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control" id="user_lastname">
+            </div>
+          </div>
+          <div class="row g-3 align-items-center">
+            <div class="col-3">
+              <label for="recipient-name" class="col-form-label">Gender </label>
+            </div>
+            <div class="col-1">
+              <label for="recipient-name" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <select name="gender" class="form-select" id="gender" required>
+                <option value="" selected>Pilih Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+          </div>
+          
+        <button type="submit" class="btn btn-warning" id="editConfirm">Edit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // popover setup
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+  const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
+  // Setup modal viewMore
+  const viewMore = document.getElementById('viewMore')
+
+  // Setup modal edit
+  const edit = document.getElementById('edit')
+  const editConfirm = document.getElementById('editConfirm')
+
+  // add listener
+  viewMore.addEventListener('show.bs.modal', event => {
+    // Button that triggered the modal
+    const button = event.relatedTarget
+    const id = button.getAttribute('data-bs-whatever')
+    $(document).ready(function (e) {
+      // e.preventDefault();
+      $.ajax({
+        type: "GET",
+        url: '/' + id + '/select',
+        success: function (response) {
+          if (response) {
+            // console.log(response)
+            {% include "modal_viewMore_js.html" %}
+            {% block viewMore_js %}
+              
+            {% endblock %}
+            
+            $(selector).val(value);
+            const editTitle = edit.querySelector('#judul')
+            const editId = edit.querySelector('#user_id')
+            const editFirstName = edit.querySelector('#user_firstname')
+            const editLastName = edit.querySelector('#user_lastname')
+            const editGender = edit.querySelector('#gender')
+
+            
+
+            // Edit
+            editTitle.textContent = `Edit data ${response[0].first_name}`
+            editId.value = response[0].user_id
+            editFirstName.value = response[0].first_name 
+            editLastName.value = response[0].last_name
+            editGender.value = response[0].gender
+            $('#editForm').submit(function (e) { 
+              e.preventDefault();
+              console.log(e);
+              $.ajax({
+                type: "POST",
+                url: "/edit",
+                data: {
+                  id: $('#edit #user_id').val(),
+                  first_name: $('#user_firstname').val(),
+                  last_name: $('#user_lastname').val(),
+                  gender: $('#gender').val(),
+                },
+                success: function (response) {
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Data berhasil diedit',
+                    showConfirmButton: false,
+                    timer: 1500
+                  }).then(function () {
+                    window.location.replace('/');
+                  })
+                }
+              });
+            });
+            
+            // Swal.fire({
+            //   icon: 'success',
+            //   title: 'Data berhasil dihapus',
+            //   showConfirmButton: false,
+            //   timer: 1500
+            // }).then(function () {
+            //   window.location.replace('/');
+            // })
+            // console.log(response)
+          } else {
+            swalWithBootstrapButtons.fire(
+              'Error!',
+              'SQL has an error',
+              'error'
+            )
+          }
+        }
+      });
+    })
+  })
+  
+</script>
+{% endblock modal %}

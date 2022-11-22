@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Barang</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .box{
+            background: #98bf21;
+            height: 100px;
+            width: 100px;
+
+            /* penting untuk bisa berjalan dengan benar */
+            position: relative;
+
+            top: 50px;
+            margin: 6px;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+        }
+        .Loading-icon{
+            display: none;
+            /* width: 20px;
+            height: 20px; */
+            margin-left: 15px;
+        }
+        .img-container{
+            width: 300px;
+            height: 300px;
+            margin-top: 20px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1 class="display-1">jQuery Miku21</h1>
+    <script>
+        $(function(){
+            // menyembunyikan elemen p
+            // $("p").hide()
+            $("#banner").hide()
+            $(".banner").hide()
+            // click
+            // $('button').click(function(){
+            //     // alert('clicked');
+            // })
+            // // double click
+            // $('button').dblclick(function(){
+            //     // alert('doubled clicked')
+            // })
+            // // mouse enter(hover)
+            // $('button').mouseenter(function(){
+            //     alert("enter mouse")
+            // })
+            // keypress karakter
+            // $('input').keypress(function(){
+            //     console.log('ngetik mas')
+            // })
+            // // keydown termasuk nonkarakter
+            // $('input').keydown(function(){
+            //     console.log('mencet mas')
+            // })
+            // // keyup event hanya sekali (jika ditahan)
+            // $('input').keyup(function(){
+            //     console.log('keyup')
+            // })
+            // alert muncul sebelum reload
+            // $('#myForm').submit(function(){
+            //     alert('Form kekirim')
+            // })
+            
+            // modifikasi dengan validasi
+            // $('#myForm').submit(function(e){
+            //     if($('input').val() == ''){
+                    
+            //     e.preventDefault();
+            //         alert('data belum diisi')
+            //     }else{
+            //         // reload
+            //         alert('Submit')
+            //     }
+            // })
+            // // ganti value select, radio, checkbock
+            // $('select').change(function(e){
+            //     alert(e.currentTarget.value)
+            // })
+            // // ganti value input
+            // $('input').input(function(){})
+            // // focus
+            // $('input').focus(function(){
+            //     // kode
+            // })       
+            // // blur akan dipanggil saat kehilangan focus
+            // $('input').blur(function(){
+            //     // kode
+            // })  
+
+            $('#fadein').click(function () { 
+                $('#text-anim').fadeIn(1000,'linear',function(){
+                    alert('sudah muncul')
+                });
+                
+            });
+            $('#fadeout').click(function () { 
+                $('#text-anim').fadeOut(1000,'linear',function(){
+                    alert('sudah hilang')
+                });
+                
+            });
+            // pakai fadetoggle 
+            $('#fade').click(function () { 
+                
+            $('#text-anim').fadeToggle(1000, 'linear');
+                
+            });
+
+            $('#fadetoin').click(function () { 
+                $('#text-anim').fadeTo(1000,1,'linear',function(){
+                    alert('sudah muncul')
+                });
+                
+            });
+            $('#fadetoout').click(function () { 
+                $('#text-anim').fadeTo(1000,0.4,'linear',function(){
+                    alert('sudah hilang')
+                });
+                
+            });
+            $('#show').click(function () { 
+                $('#show-p').show(500,'linear',function(){
+                });
+            });
+            $('#hide').click(function () { 
+                $('#show-p').hide(500,'linear',function(){
+                });
+            });
+            // pakai toggle
+            $('#toggle').click(function () { 
+                $('#text-anim').toggle(500,'linear',function(){
+                });
+            });
+            $('#slideup').click(function () { 
+                $('#text-anim').slideUp(500,'linear',function(){
+                });
+            });
+            $('#slidedown').click(function () { 
+                $('#text-anim').slideDown(500,'linear',function(){
+                });
+            });
+            $('#slidetoggle').click(function () { 
+                $('#text-anim').slideToggle(500,'linear',function(){
+                });
+            });
+            $('#anim-custom').click(function () { 
+                $('.box').animate({
+                    'top':0,
+                },500, 'linear')
+                
+            });
+
+            // jsdom
+            $('#add-class').click(function () { 
+                $('#text-change').addClass('text-red');
+            });
+            $('#remove-class').click(function () { 
+                $('#text-change').removeClass('text-red');
+            });
+            $('#add-remove-class').click(function () { 
+                $('#text-change').removeClass('text-red').addClass('text-blue');
+            });
+            $('#check-class').click(function () { 
+                alert($('#text-change').hasClass('text-blue'))
+            });
+            // ajax
+            $('#ajax-update').click(function () { 
+                $('.Loading-icon').show()
+                $('#ajax-update').attr('disabled', 'disabled')
+                $.ajax({
+                    type: "GET",
+                    url: "https://dog.ceo/api/breeds/image/random",
+                    success: function (response) {
+                        console.log(response)
+                        setTimeout(()=>{
+                            $('.Loading-icon').hide();
+                            $('#ajax-update').removeAttr('disabled');
+                        },1200);
+                        $('img.dog-img').attr('src', response.message);
+                    }
+                });
+            });
+        })
+    </script>
+    <p>Paragraf</p>
+    <button id="banner">Button</button>
+    <button class="banner">Button</button>
+    <button type="button">Klik</button>
+    <input type="text" name="" id="" placeholder="">
+    <form action="" id="myForm">
+        <select name="" id="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    <button id="fadein">Fade In</button>
+    <button id="fadeout">Fade Out</button>
+    <button id="fade">Fade</button>
+    <button id="fadetoin">Fade To In</button>
+    <button id="fadetoout">Fade To Out</button>
+    <button id="show">Show</button>
+    <button id="hide">Hide</button>
+    <button id="toggle">Toggle</button>
+    <button id="slideup">Slide Up</button>
+    <button id="slidedown">Slide Down</button>
+    <button id="slidetoggle">Slide Toggle</button>
+    <p style="display: none;" id="text-anim">Text</p>
+    <br><br><br><br><br>
+    <button id="anim-custom">Animate Custom</button>
+    <div class="box" style=""></div>
+    <br><br><br><br><br>
+    <!-- jsdom -->
+    <button id="add-class">Add Class</button>
+    <button id="remove-class">Remove Class</button>
+    <button id="add-remove-class">Add & Remove</button>
+    <button id="check-class">Cek Class</button>
+    <p id="text-change">Text</p>
+    <style>
+        .text-red {
+            color: red;
+        }
+        .text-blue{
+            color: blue;
+        }
+    </style>
+    <!-- ajax -->
+    <div class="container">
+        <button id="ajax-update">Update Gambar</button>
+        <span class="Loading-icon">
+            <img src="https://media.tenor.com/RVvnVPK-6dcAAAAC/reload-cat.gif" alt=Loading"">
+        </span>
+        <div class="img-container">
+            <img src="" class="dog-img" alt="Gambar">
+        </div>
+    </div>
+    
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

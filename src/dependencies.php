@@ -25,7 +25,7 @@ return function (App $app) {
         $database = new Medoo([
             'database_type' => 'mysql',
             'server' => '127.0.0.1',
-            'database_name' => 'slimta',
+            'database_name' => 'slim_ta',
             'username' => 'root',
             'password' => '',
         ]);

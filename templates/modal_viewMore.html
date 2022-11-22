@@ -1,0 +1,124 @@
+{% block viewMore %}
+{# View More Modal #}
+<div class="modal fade" id="viewMore" tabindex="-1" aria-labelledby="viewMoreLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="judul"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row g-3 mb-2 align-items-center" hidden>
+            <div class="col-3">
+              <label for="user_id" class="col-form-label">ID</label>
+            </div>
+            <div class="col-1">
+              <label for="user_id" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control bg-light" id="id" readonly>
+            </div>
+          </div>
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="user_id" class="col-form-label">Customer ID</label>
+            </div>
+            <div class="col-1">
+              <label for="user_id" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control bg-light" id="cust_id" readonly>
+            </div>
+          </div>
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="recipient-name" class="col-form-label">Customer Name</label>
+            </div>
+            <div class="col-1">
+              <label for="recipient-name" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control bg-light" id="cust_fullname" readonly>
+            </div>
+          </div>
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="recipient-name" class="col-form-label">Working Area</label>
+            </div>
+            <div class="col-1">
+              <label for="recipient-name" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control bg-light" id="cust_workingArea" readonly>
+            </div>
+          </div>
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="recipient-name" class="col-form-label">Country</label>
+            </div>
+            <div class="col-1">
+              <label for="recipient-name" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control bg-light" id="cust_country" readonly>
+            </div>
+          </div>
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="recipient-name" class="col-form-label">Grade</label>
+            </div>
+            <div class="col-1">
+              <label for="recipient-name" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control bg-light" id="grade" readonly>
+            </div>
+            <div class="row g-3 mb-2 align-items-center">
+              <div class="col-3">
+                <label for="recipient-name" class="col-form-label">AMT</label>
+              </div>
+              <div class="col-1">
+                <label for="recipient-name" class="col-form-label">:</label>
+              </div>
+              <div class="col-8">
+                <a href="#" role="button" class="btn btn-secondary" data-bs-toggle="popover" id="cust_amt" title="AMT" 
+                  data-bs-content="">
+                  Detail AMT</a>
+                  
+              </div>
+            </div>
+            <div class="row g-3 mb-2 align-items-center">
+              <div class="col-3">
+                <label for="recipient-name" class="col-form-label">Phone Number</label>
+              </div>
+              <div class="col-1">
+                <label for="recipient-name" class="col-form-label">:</label>
+              </div>
+              <div class="col-8">
+              <input type="text" class="form-control bg-light" id="cust_phone" readonly>
+              </div>
+            </div>
+            <div class="row g-3 mb-2 align-items-center">
+              <div class="col-3">
+                <label for="recipient-name" class="col-form-label">Agent Code</label>
+              </div>
+              <div class="col-1">
+                <label for="recipient-name" class="col-form-label">:</label>
+              </div>
+              <div class="col-8">
+              <input type="text" class="form-control bg-light" id="cust_agent" readonly>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning" data-bs-target="#edit" data-bs-toggle="modal">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+{% endblock viewMore %}

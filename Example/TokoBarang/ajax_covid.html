@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar AJAX | Gamelab Indonesia</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"> 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+    
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+            body {
+                background-color: #F1F5F8;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                margin: 0;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            input {
+                border: 2px solid #C9D8E4;
+            }
+
+            button {
+                background-color: #FF7F11;
+                border: 0;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            input, button {
+                border-radius: 5px;
+                font-size: 1.3rem;
+                padding: 8px;
+            }
+
+        .card-statistik {
+            display: none;
+            
+            background-color: #fff;
+            border-radius: 5px;
+            margin: 30px 0;
+            padding: 15px;
+        }
+
+            .font-light {
+                font-weight: 300;
+            }
+
+            .font-medium {
+                font-weight: 400;
+            }
+
+            .font-bold {
+                font-weight: 600;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                margin: 10px 0;
+                margin-top: 0;
+            }
+
+            p {
+                margin-top: 0;
+            }
+
+            .mb-3 {
+                margin-bottom: 1.2rem;
+            }
+
+            .statistik-title {
+                color: #14527B;
+                font-size: 2rem;
+                margin-bottom: 0;
+            }
+
+            .statistik-subtitle {
+                color: #98AFC3;
+                font-size: 1.15rem;
+                margin-bottom: 25px;
+            }
+
+            .data-title {
+                color: #98AFC3;
+                font-size: 1rem;
+                margin-bottom: 5px;
+            }
+
+            .data-value {
+                color: #14527B;
+                font-size: 1.2rem;
+                margin-bottom: 0px;
+            }
+
+            .flex-container {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+                .flex-container > div {
+                    flex: 0 0 50%;
+                    width: 50%;
+                }
+
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" id="name" name="name" placeholder="Masukkan nama negara">
+        <button type="button">Cek Statistik</button>
+
+        <div class="card-statistik">
+            <h4 class="font-bold statistik-title">Statistik Covid</h4>
+            <h6 class="font-medium statistik-subtitle">
+                Negara :
+                <span class="nama-negara">Indonesia</span>
+            </h6>
+
+            <div class="flex-container">
+                <div class="mb-3">
+                    <p class="data-title">Kasus Aktif</p>
+                    <p class="data-value active-case"></p>
+                </div>
+
+                <div class="mb-3">
+                    <p class="data-title">Kasus Kritis</p>
+                    <p class="data-value critical-case"></p>
+                </div>
+
+                <div>
+                    <p class="data-title">Kasus Baru</p>
+                    <p class="data-value new-case"></p>
+                </div>
+
+                <div>
+                    <p class="data-title">Sembuh</p>
+                    <p class="data-value recovered"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function formatNumber(number){
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        }
+        $(function(){
+            $('button').click(function(){
+                if($('input').val().length == 0){
+                    return swal('','Mohon masukan nama negara terlebih dahulu','warning')
+                }
+                var countryName = $('input').val().toLowerCase();
+                swal({
+                    title:"",
+                    text:"Mencari Data...",
+                    icon: "https://media.tenor.com/RVvnVPK-6dcAAAAC/reload-cat.gif",
+                    button: false
+                })
+                $.ajax({
+                    method: "GET",
+                    url: "https://covid-193.p.rapidapi.com/statistics",
+                    data: {
+                        country: countryName
+                    },
+                    headers:{
+                        "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
+                        "X-RapidAPI-Key": "ddc0de882fmshef820d773e81007p1f5704jsnf1d8ceab8bf5"
+                    },
+                    success: function(res){
+                        if(res.response.length == 0){
+                            return swal('data tidak ditemukan','Pastikan nama negara yang dituliskan benar','warning')
+                        }
+                        var data = res.response[0].cases
+                        $('.active-case').text(formatNumber(data.active));
+                        $('.critical-case').text(formatNumber(data.critical));
+                        $('.new-case').text(formatNumber(data.new));
+                        $('.recovered').text(formatNumber(data.recovered));
+                        swal.close()
+                        // capitalize
+                        var newCountry = countryName.charAt(0).toUpperCase() + countryName.slice(1)
+                        $('.nama-negara').text(newCountry);
+                        $('.card-statistik').show();
+                    }
+                });
+            });
+        })
+    </script>
+</body>
+</html>

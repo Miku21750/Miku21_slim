@@ -1,0 +1,107 @@
+
+.gd-nav-anim {
+    background: linear-gradient(258deg, #99f5f6, #5e9cb2, #275a79, #55606e, #242b33, #4e4e50, #c86c7c);
+    background-size: 1400% 1400%;
+
+    -webkit-animation: AnimationName 20s ease infinite;
+    -moz-animation: AnimationName 20s ease infinite;
+    animation: AnimationName 20s ease infinite;
+}
+.hide-text {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 0;
+}
+.word-ketik {
+    margin: auto;
+    color: white;
+    font: 700 normal 2.5em 'tahoma';
+    text-shadow: 5px 2px #222324, 2px 4px #222324, 3px 5px #222324;
+  }
+.head-anim {
+    font-size: 180px;
+    background: #121FCF;
+    background: linear-gradient(270deg, #121fcf, #12b4cf, #ffffff, #cf1512);
+    background-size: 1400% 1400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: AnimationName 20s ease infinite;
+    -moz-animation: AnimationName 20s ease infinite;
+    animation: AnimationName 20s ease infinite;
+}
+.text-head{
+    font-size: 25px!important;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: rgb(128, 128, 128);
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 48%}
+    50%{background-position:100% 53%}
+    100%{background-position:0% 48%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 48%}
+    50%{background-position:100% 53%}
+    100%{background-position:0% 48%}
+}
+
+@keyframes AnimationName {
+    0%{background-position:0% 48%}
+    50%{background-position:100% 53%}
+    100%{background-position:0% 48%}
+}
+.text-1-prfl {
+    font-size: 72px;
+    background: #121FCF;
+    background: linear-gradient(270deg, #121fcf, #12b4cf, #ffffff, #cf1512);
+    background-size: 1400% 1400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: AnimationName 20s ease infinite;
+    -moz-animation: AnimationName 20s ease infinite;
+    animation: AnimationName 20s ease infinite;
+}
+.bg-img {
+    background-image: url('https://i.ibb.co/zbhmXsn/bg.jpg');
+    background-position: center;
+    background-size: cover;
+    opacity: 0.65;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.bg-text-1-prfl{
+    background-image: url('https://i.ibb.co/zbhmXsn/bg.jpg');
+    background-position: center;
+    background-size: cover;
+    opacity: 0.65;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+@media (max-width: 911px){
+    .head-anim {
+        font-size: 80px;
+    }
+}
+@media (max-width: 767px) {
+    .bg-img {
+        background-attachment: initial;
+    }
+    .head-anim {
+        font-size: 50px;
+    }
+}
+@media (max-width: 476px){
+    .gif-miku{
+        width:300px
+    }
+}
+@media (max-width: 413px){
+    .display-2{
+        font-size: 45px!important;
+    }
+    .gif-miku{
+        width: 150px;
+    }
+}
