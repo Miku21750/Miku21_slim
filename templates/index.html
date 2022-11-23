@@ -27,8 +27,9 @@
     </section> #}
     <!-- section -->
     <section class="py-5">
-        
+        <button type="button" class="btn btn-primary" data-bs-target="#insert" data-bs-toggle="modal">Insert</button>
         <div class="container d-flex justify-content-center">
+            
             {% include "table1.html" %}
             {% block table1 %}
                 
@@ -52,6 +53,23 @@
     </section>
 </div>
 
+{# <nav>
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$Previous'"; } ?>>Previous</a>
+        </li>
+        <?php 
+        for($x=1;$x<=$total_halaman;$x++){
+            ?> 
+            <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+            <?php
+        }
+        ?>				
+        <li class="page-item">
+            <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a>
+        </li>
+    </ul>
+</nav> #}
 
 <!--  -->
 
@@ -67,10 +85,6 @@
 {% block modal %}
     
 {% endblock %}
-{% include "deleteAlert.html" %}
-{% block delete %}
-    
-{% endblock delete %}
 {#  #}
 
 {% if hasLogin == true %}

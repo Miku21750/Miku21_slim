@@ -10,10 +10,12 @@ return function (App $app) {
     $container = $app->getContainer();
     $app->post('/delete', function(Request $request, Response $response, array $args) use ($container){
         $data = $request->getParsedBody();
+        // return var_dump($data);
         $del = $container->db->delete('tbl_customers',[
             "ID_CUST" => $data
         ]);
-        return var_dump($data);
+        return $response->withJson(array('succes'=> true));
+        // return var_dump($data);
     });
     $app->post('/edit', function(Request $request, Response $response, array $args) use ($container){
         $data = $request->getParsedBody();

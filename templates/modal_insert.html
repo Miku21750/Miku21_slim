@@ -1,0 +1,159 @@
+{% block insert %}
+{# insert Modal #}
+<div class="modal fade" id="insert" tabindex="-1" aria-labelledby="insertLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="judul"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post" id="insertForm">
+          <div class="row g-3 mb-2 align-items-center" hidden>
+            <div class="col-3">
+              <label for="user_id" class="col-form-label">ID</label>
+            </div>
+            <div class="col-1">
+              <label for="user_id" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control bg-light" id="id_CUST" readonly>
+            </div>
+          </div>
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="user_id" class="col-form-label">Customer ID</label>
+            </div>
+            <div class="col-1">
+              <label for="user_id" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control bg-light" id="insert_id"  required >
+            </div>
+          </div>
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="recipient-name" class="col-form-label">Customer Name</label>
+            </div>
+            <div class="col-1">
+              <label for="recipient-name" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control" id="insert_fullname"  required >
+            </div>
+          </div>
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="recipient-name" class="col-form-label">Working Area</label>
+            </div>
+            <div class="col-1">
+              <label for="recipient-name" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control" id="insert_workingArea"  required >
+            </div>
+          </div>
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="recipient-name" class="col-form-label">Country</label>
+            </div>
+            <div class="col-1">
+              <label for="recipient-name" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control" id="insert_country"  required >
+            </div>
+          </div>
+          <div class="row g-3 mb-2 align-items-center">
+            <div class="col-3">
+              <label for="recipient-name" class="col-form-label">Grade</label>
+            </div>
+            <div class="col-1">
+              <label for="recipient-name" class="col-form-label">:</label>
+            </div>
+            <div class="col-8">
+              {# <input type="text" class="form-control bg-light" id="grade"> #}
+              <select name="grade" id="insert_grade" class="form-select" required >
+                <option selected>Select Grade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="row g-3 mb-2 align-items-center">
+              <div class="col-3">
+                <label for="recipient-name" class="col-form-label">AMT</label>
+              </div>
+              <div class="col-1">
+                <label for="recipient-name" class="col-form-label">:</label>
+              </div>
+              <div class="col-8">
+                {# <input type="text" name="opening" id="opening" class=""> #}
+                
+                <label for="openingAMT" class="form-label">Opening</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Opening" id="openingAMT"  required >
+                    <span class="input-group-text">.00</span>
+                </div>
+                
+                <label for="receiveAMT" class="form-label">Receive</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Receive" id="receiveAMT"  required >
+                    <span class="input-group-text">.00</span>
+                </div>
+                
+                <label for="paymentAMT" class="form-label">Payment</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Payment" id="paymentAMT"  required >
+                    <span class="input-group-text">.00</span>
+                </div>
+                
+                <label for="outstandingAMT" class="form-label">Outstanding</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Outstanding" id="outstandingAMT"  required >
+                    <span class="input-group-text">.00</span>
+                </div>
+              </div>
+            </div>
+            <div class="row g-3 mb-2 align-items-center">
+              <div class="col-3">
+                <label for="recipient-name" class="col-form-label">Phone Number</label>
+              </div>
+              <div class="col-1">
+                <label for="recipient-name" class="col-form-label">:</label>
+              </div>
+              <div class="col-8">
+              <input type="text" class="form-control" id="insert_phone"  required >
+              </div>
+            </div>
+            <div class="row g-3 mb-2 align-items-center">
+              <div class="col-3">
+                <label for="recipient-name" class="col-form-label">Agent Code</label>
+              </div>
+              <div class="col-1">
+                <label for="recipient-name" class="col-form-label">:</label>
+              </div>
+              <div class="col-8">
+              {# <input type="text" class="form-control bg-light" id="cust_agent" readonly> #}
+              <select name="cust_agent" id="insert_agent" class="form-select" required >
+              </select>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        {# <button class="btn btn-warning" type="submit">insert</button> #}
+        <input type="submit" value="insert" class="btn btn-warning">
+      </div>
+      
+    </form>
+    </div>
+  </div>
+</div>
+  
+{% endblock %}

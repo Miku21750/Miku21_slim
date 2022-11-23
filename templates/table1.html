@@ -17,7 +17,7 @@
         
           {% for cust in data %}
 
-          <tr id="{{cust.ID_CUST}}/del">
+          <tr>
               <th scope="row">{{ loop.index}}</th>
               {# <td id="user_id" >{{cust.ID_CUST}}</td> #}
               <td>{{cust.CUST_CODE}}</td>
@@ -31,9 +31,17 @@
               </td>
             </tr>
           {% endfor %}
+          <script>
+             var limit = 5;
+
+          </script>
     </tbody>
   </table>
 {# </form> #}
 
 
+{% include "deleteAlert.html" %}
+{% block delete %}
+    
+{% endblock delete %}
 {% endblock table1 %}
