@@ -1,6 +1,6 @@
-{% block viewMore %}
-{# View More Modal #}
-<div class="modal fade" id="viewMore" tabindex="-1" aria-labelledby="viewMoreLabel" aria-hidden="true">
+{% block edit %}
+{# Edit Modal #}
+<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,7 +8,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="" method="post" id="editForm">
           <div class="row g-3 mb-2 align-items-center" hidden>
             <div class="col-3">
               <label for="user_id" class="col-form-label">ID</label>
@@ -17,7 +17,7 @@
               <label for="user_id" class="col-form-label">:</label>
             </div>
             <div class="col-8">
-              <input type="text" class="form-control bg-light" id="id" readonly>
+              <input type="text" class="form-control bg-light" id="id_CUST" readonly>
             </div>
           </div>
           <div class="row g-3 mb-2 align-items-center">
@@ -28,7 +28,7 @@
               <label for="user_id" class="col-form-label">:</label>
             </div>
             <div class="col-8">
-              <input type="text" class="form-control bg-light" id="cust_id" readonly>
+              <input type="text" class="form-control bg-light" id="edit_id" readonly>
             </div>
           </div>
           <div class="row g-3 mb-2 align-items-center">
@@ -39,7 +39,7 @@
               <label for="recipient-name" class="col-form-label">:</label>
             </div>
             <div class="col-8">
-              <input type="text" class="form-control bg-light" id="cust_fullname" readonly>
+              <input type="text" class="form-control" id="edit_fullname">
             </div>
           </div>
           <div class="row g-3 mb-2 align-items-center">
@@ -50,7 +50,7 @@
               <label for="recipient-name" class="col-form-label">:</label>
             </div>
             <div class="col-8">
-              <input type="text" class="form-control bg-light" id="cust_workingArea" readonly>
+              <input type="text" class="form-control" id="edit_workingArea">
             </div>
           </div>
           <div class="row g-3 mb-2 align-items-center">
@@ -61,7 +61,7 @@
               <label for="recipient-name" class="col-form-label">:</label>
             </div>
             <div class="col-8">
-              <input type="text" class="form-control bg-light" id="cust_country" readonly>
+              <input type="text" class="form-control" id="edit_country">
             </div>
           </div>
           <div class="row g-3 mb-2 align-items-center">
@@ -72,7 +72,13 @@
               <label for="recipient-name" class="col-form-label">:</label>
             </div>
             <div class="col-8">
-              <input type="text" class="form-control bg-light" id="grade" readonly>
+              {# <input type="text" class="form-control bg-light" id="grade"> #}
+              <select name="grade" id="edit_grade" class="form-select" required >
+                <option selected>Select Grade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
             </div>
             <div class="row g-3 mb-2 align-items-center">
               <div class="col-3">
@@ -82,14 +88,35 @@
                 <label for="recipient-name" class="col-form-label">:</label>
               </div>
               <div class="col-8">
-                {# <a href="#" role="button" class="btn btn-secondary" data-bs-toggle="popover" id="cust_amt" title="AMT" 
-                  data-bs-content="">
-                  Detail AMT
-                </a> #}
-                <button class="btn btn-danger btn-xs" id="cust_amt" type="button" data-toggle="popover" data-trigger="manual" title="AMT" data-content="There are no changes to save.">
-                  <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
-                  Detail AMT
-                </button>
+                {# <input type="text" name="opening" id="opening" class=""> #}
+                
+                <label for="openingAMT" class="form-label">Opening</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Opening" id="openingAMT">
+                    <span class="input-group-text">.00</span>
+                </div>
+                
+                <label for="receiveAMT" class="form-label">Receive</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Receive" id="receiveAMT">
+                    <span class="input-group-text">.00</span>
+                </div>
+                
+                <label for="paymentAMT" class="form-label">Payment</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Payment" id="paymentAMT">
+                    <span class="input-group-text">.00</span>
+                </div>
+                
+                <label for="outstandingAMT" class="form-label">Outstanding</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Outstanding" id="outstandingAMT">
+                    <span class="input-group-text">.00</span>
+                </div>
               </div>
             </div>
             <div class="row g-3 mb-2 align-items-center">
@@ -100,7 +127,7 @@
                 <label for="recipient-name" class="col-form-label">:</label>
               </div>
               <div class="col-8">
-              <input type="text" class="form-control bg-light" id="cust_phone" readonly>
+              <input type="text" class="form-control" id="edit_phone">
               </div>
             </div>
             <div class="row g-3 mb-2 align-items-center">
@@ -111,19 +138,22 @@
                 <label for="recipient-name" class="col-form-label">:</label>
               </div>
               <div class="col-8">
-              <input type="text" class="form-control bg-light" id="cust_agent" readonly>
+              {# <input type="text" class="form-control bg-light" id="cust_agent" readonly> #}
+              <select name="cust_agent" id="edit_agent" class="form-select" required >
+              </select>
               </div>
             </div>
           </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        {# <button type="button" class="btn btn-warning" data-bs-target="#edit" data-bs-toggle="modal"  data-bs-dismiss="modal">Edit</button> #}
-        <button type="button" class="btn btn-warning" data-bs-target="#edit" data-bs-toggle="modal">Edit</button>
+        {# <button class="btn btn-warning" type="submit">Edit</button> #}
+        <input type="submit" value="Edit" class="btn btn-warning">
       </div>
+      
+    </form>
     </div>
   </div>
 </div>
   
-{% endblock viewMore %}
+{% endblock %}

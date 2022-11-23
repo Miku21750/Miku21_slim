@@ -1,0 +1,48 @@
+{% block edit_js %}
+const editTitle = edit.querySelector('#judul')
+const idcust = edit.querySelector('#id_CUST')
+const editId = edit.querySelector('#edit_id')
+const editName = edit.querySelector('#edit_fullname')
+const edit_workingArea = edit.querySelector('#edit_workingArea')
+const edit_country = edit.querySelector('#edit_country')
+const edit_grade = edit.querySelector('#edit_grade')
+const edit_openingAMT = edit.querySelector('#openingAMT')
+const edit_receiveAMT = edit.querySelector('#receiveAMT')
+const edit_paymentAMT = edit.querySelector('#paymentAMT')
+const edit_outstandingAMT = edit.querySelector('#outstandingAMT')
+const edit_phone = edit.querySelector('#edit_phone')
+const edit_agent = edit.querySelector('#edit_agent')
+
+{# console.log("AAAAA" + response[0]) #}
+editTitle.textContent = `Data ${response[0].CUST_NAME}`
+{# console.log(response) #}
+idcust.value = response[0].ID_CUST
+editId.value = response[0].CUST_CODE
+editName.value = response[0].CUST_NAME
+edit_workingArea.value = response[0].WORKING_AREA
+edit_country.value = response[0].CUST_COUNTRY
+edit_grade.value = response[0].GRADE
+{# var msg = `Opening : ${response[0].OPENING_AMT}\nReceive : ${response[0].RECEIVE_AMT}\nPayment : ${response[0].PAYMENT_AMT}\nOutstanding : ${response[0].OUTSTANDING_AMT}` #}
+{# $("#cust_amt").popover({content: msg}) #}
+{# cust_amt.setAttribute("data-bs-content",`Opening : ${response[0].OPENING_AMT}\nReceive : ${response[0].RECEIVE_AMT}\nPayment : ${response[0].PAYMENT_AMT}\nOutstanding : ${response[0].OUTSTANDING_AMT}`) #}
+edit_openingAMT.value = response[0].OPENING_AMT
+edit_receiveAMT.value = response[0].RECEIVE_AMT
+edit_paymentAMT.value = response[0].PAYMENT_AMT
+edit_outstandingAMT.value = response[0].OUTSTANDING_AMT
+edit_phone.value = response[0].PHONE_NO
+
+{# agent select #}
+{# var select = document.getElementById('cust_agent'); #}
+{# console.log({{ agent|json_encode|raw }}) #}
+var agent = {{ agent|json_encode|raw }}
+var count = Object.keys(agent).length;
+console.log(agent)
+
+for (var i = 0; i < count; i++){
+    var opt = document.createElement('option');
+    opt.value = agent[i].AGENT_CODE;
+    opt.innerHTML = agent[i].AGENT_NAME;
+    edit_agent.appendChild(opt);
+}
+edit_agent.value = response[0].AGENT_CODE
+{% endblock edit_js %}

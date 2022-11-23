@@ -7,33 +7,33 @@
     <thead>
       <tr>  
         <th scope="col">#</th>
+        {# <th scope="col">Customer ID</th> #}
         <th scope="col">Customer ID</th>
         <th scope="col">Customer Name</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="show_data">
         
           {% for cust in data %}
 
-          <tr id="{{cust.ID}}/del">
+          <tr id="{{cust.ID_CUST}}/del">
               <th scope="row">{{ loop.index}}</th>
-              <td id="user_id" hidden>{{cust.ID}}</td>
+              {# <td id="user_id" >{{cust.ID_CUST}}</td> #}
               <td>{{cust.CUST_CODE}}</td>
               <td>{{cust.CUST_NAME}}</td>
               <td>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore" data-bs-whatever="{{cust.ID}}">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore" data-bs-whatever="{{cust.ID_CUST}}">
                     View More
                 </button>
-                <button class="btn btn-danger delete_items" id="{{cust.ID}}" >Delete Data</button>
+                {# <button class="btn btn-danger delete_items" id="{{cust.ID_CUST}}" >Delete Data</button> #}
+                <button class="btn btn-danger delete_items" data-bs-whatever="{{cust.ID_CUST}}" id="delete" >Delete Data</button>
               </td>
             </tr>
           {% endfor %}
     </tbody>
   </table>
 {# </form> #}
-{% include "deleteAlert.html" %}
-{% block delete %}
-    
-{% endblock delete %}
+
+
 {% endblock table1 %}

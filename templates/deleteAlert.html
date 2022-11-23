@@ -1,76 +1,84 @@
 {% block delete %}
 <script>
-    $(document).ready(function(){
-        $(".delete_items").click(function(){
+    $(document).ready(function () {
+        // $('#demo').DataTable();
+        // console.log($('#delete').attr('data-bs-whatever'))
+        console.log($('#delete').attr('id'))
+        $('#delete').on('click',function (e) { 
+            console.log(e)
+            e.preventDefault();
             const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-        })
-
-        swalWithBootstrapButtons.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        reverseButtons: true
-        }).then((result) => {
-            // console.log(result)
-        if (result.isConfirmed == true) {
-            //ajax api
-            Swal.fire({
-            title:"",
-            text:"Loading...",
-            imageUrl: "https://media.tenor.com/RVvnVPK-6dcAAAAC/reload-cat.gif",
-            imageWidth: 300,
-            showConfirmButton: false
-             })
-            var del_id = $(this).attr('id')
-            $.ajax({
-                type: "POST",
-                url: '/delete',
-                data: {
-                    id: del_id
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
                 },
-                success: function (response) {
-                    if(response){
-                        // setTimeout(function(){// wait for 5 secs(2)
-                        //     location.reload(); // then reload the page.(3)
-                        // }, 5000); 
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Data berhasil dihapus',
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(function(){ 
-                        window.location.replace('/');
-                        })
-                        // console.log(response)
-                        }else{
-                        swalWithBootstrapButtons.fire(
-                        'Error!',
-                        'SQL has an error',
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                // console.log(result)
+                if (result.isConfirmed == true) {
+                    //ajax api
+                    Swal.fire({
+                        title: "",
+                        text: "Loading...",
+                        imageUrl: "https://media.tenor.com/RVvnVPK-6dcAAAAC/reload-cat.gif",
+                        imageWidth: 300,
+                        showConfirmButton: false
+                    })
+                    var del_id = $(this).attr('id')
+                    $.ajax({
+                        type: "POST",
+                        url: '/delete',
+                        data: {
+                            id: del_id
+                        },
+                        success: function (response) {
+                            if (response) {
+                                // setTimeout(function(){// wait for 5 secs(2)
+                                //     location.reload(); // then reload the page.(3)
+                                // }, 5000); 
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Data berhasil dihapus',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                }).then(function () {
+                                    window.location.replace('/');
+                                })
+                                // console.log(response)
+                            } else {
+                                swalWithBootstrapButtons.fire(
+                                    'Error!',
+                                    'SQL has an error',
+                                    'error'
+                                )
+                            }
+                        }
+                    });
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Your data is safe :)',
                         'error'
-                        )
-                    }
+                    )
                 }
-            });
-        } else if (
-            /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire(
-            'Cancelled',
-            'Your data is safe :)',
-            'error'
-            )
-        }
-        })
+            })
+        });
+        $("#delete").click(function () {
+            
         });
     });
-</script>    
+</script>
 {% endblock delete %}

@@ -20,33 +20,37 @@
             //     'data' => $data,
             //     'count' => $count
             // ));
-            $offset = $args['offset'];
-            $limit = $args['limit'];
-            $page = $args['page'];
-            $count = $c->db->count("tbl_customers",[
-                "[><]tbl_agents"=>["AGENT_CODE"=>"AGENT_CODE"]
-            ],[
-                "tbl_customers.ID"
-            ]);
+            // $offset = $args['offset'];
+            // $limit = $args['limit'];
+            // $page = $args['page'];
+            // $count = $c->db->count("tbl_customers",[
+            //     "[><]tbl_agents"=>["AGENT_CODE"=>"AGENT_CODE"]
+            // ],[
+            //     "tbl_customers.ID"
+            // ]);
+            
             $data = $c->db->select("tbl_customers",[
                 "[><]tbl_agents"=>["AGENT_CODE"=>"AGENT_CODE"]
             ],'*',[
-                "ORDER"=> "CUST_CODE",
-                "LIMIT"=>[$offset, $limit]
+                "ORDER"=> "CUST_CODE"
+                // "LIMIT"=>[$offset, $limit]
             ]);
+            $agent = $c->db->select("tbl_agents","*");
             // return var_dump($data);
-            // return var_dump($data);
+            // return json_encode($data);
             if($args['hasLogin'] == true){
                 $c->view->render($rsp, 'index.html',[
                     'hasLogin'=>true,
                     'name'=>$_SESSION['name'],
-                    'data'=>$data
+                    'data'=>$data,
+                    'agent'=>$agent
                 ]);
             }else{
                 $c->view->render($rsp, 'index.html',[
                     'hasLogin'=>false,
                     'name'=>$_SESSION['name'],
-                    'data'=>$data
+                    'data'=>$data,
+                    'agent'=>$agent
                 ]);
             }
         }
@@ -62,7 +66,7 @@
             $data = $args['data']['id'];
             // return var_dump($data);
             $del = $c->db->delete('tbl_customers',[
-                "ID" => $data
+                "ID_CUST" => $data
             ]);
             // return var_dump($del);
         }
@@ -129,6 +133,26 @@
                         'name'=>$_SESSION['name']
                     ]);
             }
+        }
+
+        public static function edit($c,$req,$rsp,$args){
+            $data_edit = $args['data'];
+            // return var_dump($data_edit);
+            $update = $c->db->update('tbl_customers',[
+                'CUST_NAME'=>$data_edit['cust_fullname'],
+                'WORKING_AREA'=>$data_edit['cust_workingArea'],
+                'CUST_COUNTRY'=>$data_edit['cust_country'],
+                "GRADE"=>$data_edit['grade'],
+                "OPENING_AMT"=>$data_edit['openingAMT'],
+                "RECEIVE_AMT"=>$data_edit['receiveAMT'],
+                "PAYMENT_AMT"=>$data_edit['paymentAMT'],
+                "OUTSTANDING_AMT"=>$data_edit['outstandingAMT'],
+                "PHONE_NO"=>$data_edit['cust_phone'],
+                "AGENT_CODE"=>$data_edit['cust_agent'],
+            ],[
+                "ID_CUST"=>$data_edit['id']
+            ]);
+            // console.log($data_edit);
         }
     }
 ?>

@@ -14,7 +14,7 @@
         <div class="font-weight-bold head-anim">Halo {{name}}</div>
     </header>
     
-    <section class="py-1">
+    {# <section class="py-1">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
               <li class="page-item"><a class="page-link" href="/?page=1">Previous</a></li>
@@ -24,11 +24,11 @@
               <li class="page-item"><a class="page-link" href="/?page=2">Next</a></li>
             </ul>
           </nav>
-    </section>
+    </section> #}
     <!-- section -->
     <section class="py-5">
         
-        <div class="container d-flex justify-contents-center">
+        <div class="container d-flex justify-content-center">
             {% include "table1.html" %}
             {% block table1 %}
                 
@@ -61,12 +61,16 @@
 {% block footer %}
 
 {% endblock %}
-
 <!-- modal -->
+    
 {% include "modal.html" %}
 {% block modal %}
     
 {% endblock %}
+{% include "deleteAlert.html" %}
+{% block delete %}
+    
+{% endblock delete %}
 {#  #}
 
 {% if hasLogin == true %}
