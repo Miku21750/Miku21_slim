@@ -27,21 +27,17 @@
   editModal.addEventListener('shown.bs.modal', () => {
     myInput.focus()
 })
-<<<<<<< HEAD
   insertModal.addEventListener('shown.bs.modal',() =>{
     insertInput.focus()
   })
   
-=======
->>>>>>> 4cb15759e998ee75e27c33208f4cf8def0f11f38
+
   // Setup modal viewMore
   const viewMore = document.getElementById('viewMore')
 
   // Setup modal edit
   const edit = document.getElementById('edit')
   // const editConfirm = document.getElementById('editConfirm')
-
-<<<<<<< HEAD
   //setup modal insert
   const insert = document.getElementById('insert')
   
@@ -83,22 +79,13 @@
             })
             .then(function () {
               console.log('asu');
-              window.location.reload('/');
+              $('#insert').modal(toggle)
+              table.draw(false)
             })
           }
         });
       });
     })
-=======
-  // setup modal insert
-  const insert = document.getElementById('insert')
-  const insertConfirm = document.getElementById('insertConfirm')
-
-  insert.addEventListener('show.bs.modal',event => {
-    const button = event.relatedTarget
-    const id = button.getAttribute('data-bs-whatever')
-
->>>>>>> 4cb15759e998ee75e27c33208f4cf8def0f11f38
   })
   // add listener
   viewMore.addEventListener('show.bs.modal', event => {
@@ -155,7 +142,9 @@
                     timer: 1500
                   })
                   .then(function () {
-                    window.location.reload('/');
+                    $('#edit').modal('toggle')
+                    table.draw(false)
+
                   })
                 }
               });

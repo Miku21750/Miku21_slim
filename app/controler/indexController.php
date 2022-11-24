@@ -158,21 +158,22 @@
             $dir = $dir[0]['dir'];
 
             $condition = [
-                "LIMIT" => [$start, $limit]
+                "LIMIT" => [$start, $limit],
+                "ORDER"=> "CUST_CODE"
             ];
             if(!empty($req->getParam('search')['value'])){
                 $search = $req->getParam('search')['value'];
                 $condition['OR'] =[
-                    'tbl_customers.CUST_NAME'=> '%'.$search.'%',
-                    'tbl_customers.CUST_CODE'=> '%'.$search.'%',
-                    'tbl_customers.CUST_COUNTRY'=> '%'.$search.'%'
+                    'tbl_customers.CUST_NAME[~]'=> '%'.$search.'%',
+                    'tbl_customers.CUST_CODE[~]'=> '%'.$search.'%',
+                    'tbl_customers.CUST_COUNTRY[~]'=> '%'.$search.'%'
                 ];
             }
 
-            $showData = $c->db->debug()->select('tbl_customers',[
+            $showData = $c->db->select('tbl_customers',[
                 "[><]tbl_agents"=>"AGENT_CODE"
             ],'*',$condition);
-            var_dump($showData)
+            // var_dump($showData)
 ;            $data = array();
 
             if(!empty($showData)){

@@ -1,14 +1,12 @@
 {% block ajax %}
-<<<<<<< HEAD
-    
-=======
+<script>
     $(document).ready(function(){
         TableShow = function(){
-            table = $('#show_data').on('preXhr.dt', function(e, settings, data){
-                {% comment %} Loading {% endcomment %}
+            table = $('#demo').on('preXhr.dt', function(e, settings, data){
+                // Loading
             })
             .on('draw.dt', function(){
-                {% comment %} Finish reload {% endcomment %}
+                // Finish reload 
             })
             .DataTable({
                 "columnDefs":[
@@ -22,7 +20,7 @@
                 "serverSide": true,
                 "serverMethod": "GET",
                 "ajax":{
-                    'url':"/select"
+                    'url':"/select",
                     'dataType': 'json',
                     'type': 'GET'
                 },
@@ -36,5 +34,5 @@
         }
         TableShow();
     })
->>>>>>> 4cb15759e998ee75e27c33208f4cf8def0f11f38
+</script>
 {% endblock ajax %}

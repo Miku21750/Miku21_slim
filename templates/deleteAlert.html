@@ -1,7 +1,7 @@
 {% block delete %}
 <script>
     $(function () {
-        $('#demo').DataTable();
+        // $('#demo').DataTable();
         // console.log($('#delete').attr('data-bs-whatever'))
         // var elt = document.getElementById('delete')
         // console.log($('#delete').attr('data-bs-whatever'))
@@ -57,7 +57,7 @@
                                     timer: 1500
                                 })
                                 .then(function () {
-                                    window.location.reload();
+                                    $('#delete').modal('toggle')
                                 })
                                 console.log(response)
                             } else {
