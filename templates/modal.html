@@ -11,10 +11,6 @@
 {% block insert %}
   
 {% endblock insert %}
-{% include "modal_insert_js.html" %}
-{% block insert_js %}
-  
-{% endblock %}
 
 <script>
   // popover setup
@@ -29,7 +25,6 @@
   editModal.addEventListener('shown.bs.modal', () => {
     myInput.focus()
 })
-  
   // Setup modal viewMore
   const viewMore = document.getElementById('viewMore')
 
@@ -37,12 +32,21 @@
   const edit = document.getElementById('edit')
   const editConfirm = document.getElementById('editConfirm')
 
+  // setup modal insert
+  const insert = document.getElementById('insert')
+  const insertConfirm = document.getElementById('insertConfirm')
+
+  insert.addEventListener('show.bs.modal',event => {
+    const button = event.relatedTarget
+    const id = button.getAttribute('data-bs-whatever')
+
+  })
   // add listener
   viewMore.addEventListener('show.bs.modal', event => {
     // Button that triggered the modal
     const button = event.relatedTarget
-    const id = button.getAttribute('data-bs-whatever')
-    // console.log(id)
+    const id = button.getAttribute('data-bs-whatever')    
+    console.log(id)
     $(document).ready(function (e) {
       // e.preventDefault();
       
@@ -96,7 +100,7 @@
               });
             });
           } else {
-            swalWithBootstrapButtons.fire(
+            Swal.fire(
               'Error!',
               'SQL has an error',
               'error'

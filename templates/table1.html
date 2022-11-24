@@ -15,26 +15,6 @@
     </thead>
     <tbody id="show_data">
         
-          {% for cust in data %}
-
-          <tr>
-              <th scope="row">{{ loop.index}}</th>
-              {# <td id="user_id" >{{cust.ID_CUST}}</td> #}
-              <td>{{cust.CUST_CODE}}</td>
-              <td>{{cust.CUST_NAME}}</td>
-              <td>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore" data-bs-whatever="{{cust.ID_CUST}}">
-                    View More
-                </button>
-                {# <button class="btn btn-danger delete_items" id="{{cust.ID_CUST}}" >Delete Data</button> #}
-                <button class="btn btn-danger delete_items" data-bs-whatever="{{cust.ID_CUST}}" id="delete" >Delete Data</button>
-              </td>
-            </tr>
-          {% endfor %}
-          <script>
-             var limit = 5;
-
-          </script>
     </tbody>
   </table>
 {# </form> #}
