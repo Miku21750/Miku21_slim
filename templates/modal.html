@@ -11,10 +11,6 @@
 {% block insert %}
   
 {% endblock insert %}
-{% include "modal_insert_js.html" %}
-{% block insert_js %}
-  
-{% endblock %}
 
 <script>
   // popover setup
@@ -25,18 +21,71 @@
   // setup autofocus
   const editModal = document.getElementById('edit')
   const myInput = document.getElementById('edit_fullname')
+  const insertModal = document.getElementById('insert')
+  const insertInput = document.getElementById('insert_id')
 
   editModal.addEventListener('shown.bs.modal', () => {
     myInput.focus()
 })
+  insertModal.addEventListener('shown.bs.modal',() =>{
+    insertInput.focus()
+  })
   
   // Setup modal viewMore
   const viewMore = document.getElementById('viewMore')
 
   // Setup modal edit
   const edit = document.getElementById('edit')
-  const editConfirm = document.getElementById('editConfirm')
+  // const editConfirm = document.getElementById('editConfirm')
 
+  //setup modal insert
+  const insert = document.getElementById('insert')
+  
+  //listener insert modal
+  insert.addEventListener('show.bs.modal',event=>{
+    
+    const button = event.relatedTarget
+    $(document).ready(function(e){
+      // console.log('asu');
+      {% include "modal_insert_js.html" %}
+      {% block insert_js %}
+        
+      {% endblock %}
+      $('#insertForm').submit(function (e) { 
+        e.preventDefault();
+        console.log('asu');
+        $.ajax({
+          type: "POST",
+          url: "/insert",
+          data: {
+            cust_id: $('#insert_id').val(),
+            cust_fullname: $('#insert_fullname').val(),
+            cust_workingArea: $('#insert_workingArea').val(),
+            cust_country: $('#insert_country').val(),
+            grade: $('#insert_grade').val(),
+            openingAMT: $('#insert_openingAMT').val(),
+            receiveAMT: $('#insert_receiveAMT').val(),
+            paymentAMT: $('#insert_paymentAMT').val(),
+            outstandingAMT: $('#insert_outstandingAMT').val(),
+            cust_phone: $('#insert_phone').val(),
+            cust_agent: $('#insert_agent').val(),
+          },
+          success: function (response) {
+            Swal.fire({
+              icon: 'success',
+              title: 'Data berhasil diedit',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            .then(function () {
+              console.log('asu');
+              window.location.reload('/');
+            })
+          }
+        });
+      });
+    })
+  })
   // add listener
   viewMore.addEventListener('show.bs.modal', event => {
     // Button that triggered the modal
@@ -61,9 +110,11 @@
             {% block edit_js %}
               
             {% endblock %}
+            // console.log('asu')    
             $('#editForm').submit(function (e) { 
               e.preventDefault();
-              console.log(e);
+              console.log('asu')
+              // console.log(e);
               $.ajax({
                 type: "POST",
                 url: "/edit",
@@ -90,13 +141,13 @@
                     timer: 1500
                   })
                   .then(function () {
-                    window.location.replace('/');
+                    window.location.reload('/');
                   })
                 }
               });
             });
           } else {
-            swalWithBootstrapButtons.fire(
+            Swal.fire(
               'Error!',
               'SQL has an error',
               'error'
@@ -106,6 +157,9 @@
       });
     })
   })
+  function toggleModal(){
+    $('#viewMore').modal('toggle');
+  }
   
 </script>
 {% endblock modal %}

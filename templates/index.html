@@ -26,10 +26,11 @@
           </nav>
     </section> #}
     <!-- section -->
+    {# {{ data|json_encode()|raw }} #}
     <section class="py-5">
         <button type="button" class="btn btn-primary" data-bs-target="#insert" data-bs-toggle="modal">Insert</button>
         <div class="container d-flex justify-content-center">
-            
+           
             {% include "table1.html" %}
             {% block table1 %}
                 

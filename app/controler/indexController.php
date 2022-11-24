@@ -56,6 +56,8 @@
         }
         // enter login or register mode based on args
         public static function log($c, $req, $rsp, $args){
+            $hasRegistered  = isset($_SESSION['hasRegistered']);
+            unset($_SESSION['hasRegistered']);
             $c->view->render($rsp, 'login.html',[
                 'mode'=>$args['data']
             ]);
@@ -130,11 +132,10 @@
                 // go into index
                 // session_start();
                 // return var_dump($d[0]['first_name']);
-                $_SESSION['name'] = $d[0]['FIRST_NAME'];
-                return IndexController::index($c,$req,$rsp,[
-                        'hasLogin'=>true,
-                        'name'=>$_SESSION['name']
-                    ]);
+                $_SESSION['hasLogin'] = true;
+                $name = $_SESSION['name'] = $d[0]['FIRST_NAME'];
+
+                return $rsp->withRedirect('/');
             }
         }
 

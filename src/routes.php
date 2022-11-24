@@ -10,17 +10,20 @@ return function (App $app) {
     $container = $app->getContainer();
     $app->post('/delete', function(Request $request, Response $response, array $args) use ($container){
         $data = $request->getParsedBody();
-        // return var_dump($data);
         $del = $container->db->delete('tbl_customers',[
             "ID_CUST" => $data
         ]);
         return $response->withJson(array('succes'=> true));
-        // return var_dump($data);
     });
     $app->post('/edit', function(Request $request, Response $response, array $args) use ($container){
         $data = $request->getParsedBody();
-        // return var_dump($data);
         return IndexController::edit($container,$request,$response,[
+            "data"=> $data
+        ]);
+    });
+    $app->post('/insert', function(Request $request, Response $response, array $args) use ($container){
+        $data = $request->getParsedBody();
+        return IndexController::insert($container,$request,$response,[
             "data"=> $data
         ]);
     });
@@ -78,8 +81,10 @@ return function (App $app) {
         return $response->withJson($data);
     });
     $app->get('/', function (Request $request, Response $response, array $args) use ($container) {
+        $hasRegistered  = isset($_SESSION['hasLogin']);
+        unset($_SESSION['hasLogin']);
         return IndexController::index($container,$request,$response,[
-            'hasLogin'=>false,
+            'hasLogin'=>$hasRegistered,
         ]);
     })->add(new Auth());
 };
