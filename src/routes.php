@@ -72,13 +72,8 @@ return function (App $app) {
         return $response->withJson($search);
     })->add(new Auth());
     $app->get('/select', function (Request $request, Response $response, array $args) use ($container) {
-        $data = $container->db->select("tbl_customers",[
-            "[><]tbl_agents"=>"AGENT_CODE"
-        ],'*',[
-            "ORDER"=> "CUST_CODE"
-        ]);
-        // return var_dump($data);
-        return $response->withJson($data);
+        return IndexController::select($container,$request,$response,$args);
+        
     });
     $app->get('/', function (Request $request, Response $response, array $args) use ($container) {
         $hasRegistered  = isset($_SESSION['hasLogin']);

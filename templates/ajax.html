@@ -1,3 +1,40 @@
 {% block ajax %}
+<<<<<<< HEAD
     
+=======
+    $(document).ready(function(){
+        TableShow = function(){
+            table = $('#show_data').on('preXhr.dt', function(e, settings, data){
+                {% comment %} Loading {% endcomment %}
+            })
+            .on('draw.dt', function(){
+                {% comment %} Finish reload {% endcomment %}
+            })
+            .DataTable({
+                "columnDefs":[
+                {width:"1%","targets":0, className:"text-end", "orderAble":false},
+                {width:"30%","targets":0, className:"text-end", "orderAble":false},
+                {width:"30%","targets":0, className:"text-end", "orderAble":false},
+                {width:"30%","targets":0, className:"text-end", "orderAble":false},
+                ],
+                "pageLength": 5,
+                "processing": true,
+                "serverSide": true,
+                "serverMethod": "GET",
+                "ajax":{
+                    'url':"/select"
+                    'dataType': 'json',
+                    'type': 'GET'
+                },
+                'columns':[
+                    {'data' : '#'},
+                    {'data' : 'Cust_Code'},
+                    {'data' : 'Cust_Name'},
+                    {'data' : 'Action'},
+                ]
+            })
+        }
+        TableShow();
+    })
+>>>>>>> 4cb15759e998ee75e27c33208f4cf8def0f11f38
 {% endblock ajax %}

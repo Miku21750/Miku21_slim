@@ -120,7 +120,7 @@
             $d = $c->db->select('tbl_users','*',[
                 "USER"=>$data_log['user'],
                 'PASSWORD'=>md5($data_log['pass'])
-            ]);
+            ]);     
             // if not exist
             if($d == null){
                 $c->view->render($rsp, 'login.html',[
@@ -138,7 +138,70 @@
                 return $rsp->withRedirect('/');
             }
         }
+        public static function select($c, $req, $rsp, $args){
+            $data = $c->db->select("tbl_customers",[
+                "[><]tbl_agents"=>"AGENT_CODE"
+            ],'*',[
+                "ORDER"=> "CUST_CODE"
+            ]);
+            $columns = array(
+                0=>'index',
+            );
+            
+            
+            $totalfilter = $totaldata = count($data);
+            $limit = $req->getParam('length');
+            $start = $req->getParam('start');
+            $order = $req->getParam('order');
+            $order = $columns[$order[0]['column']];
+            $dir = $req->getParam('order');
+            $dir = $dir[0]['dir'];
 
+            $condition = [
+                "LIMIT" => [$start, $limit]
+            ];
+            if(!empty($req->getParam('search')['value'])){
+                $search = $req->getParam('search')['value'];
+                $condition['OR'] =[
+                    'tbl_customers.CUST_NAME'=> '%'.$search.'%',
+                    'tbl_customers.CUST_CODE'=> '%'.$search.'%',
+                    'tbl_customers.CUST_COUNTRY'=> '%'.$search.'%'
+                ];
+            }
+
+            $showData = $c->db->debug()->select('tbl_customers',[
+                "[><]tbl_agents"=>"AGENT_CODE"
+            ],'*',$condition);
+            var_dump($showData)
+;            $data = array();
+
+            if(!empty($showData)){
+                $index = $req->getParam('start') + 1;
+                foreach ($showData as $d){
+                    $each['#'] = $index.'.';
+                    $each['Cust_Name'] = $d['CUST_NAME'];
+                    $each['Cust_Code'] = $d['CUST_CODE'];
+                    $each['Action'] = 
+                    '<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewMore" data-bs-whatever="'.$d['ID_CUST'].'">
+                    View More
+                </button>
+                <button class="btn btn-danger delete_items" data-bs-whatever="'.$d['ID_CUST'].'" id="delete" >Delete Data</button>'
+                ;
+                    $data[] = $each;
+                    $index++;
+                }
+            }
+
+            $json_data = array(
+                "draw"=>intval($req->getParam('draw')),
+                "recordsTotal"=>intval($totaldata),
+                "recordsFiltered"=>intval($totalfilter),
+                "data"=>$data
+            );
+            echo json_encode($json_data);
+
+        // // return var_
+        }
         public static function edit($c,$req,$rsp,$args){
             $data_edit = $args['data'];
             // return var_dump($data_edit);

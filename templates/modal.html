@@ -27,10 +27,13 @@
   editModal.addEventListener('shown.bs.modal', () => {
     myInput.focus()
 })
+<<<<<<< HEAD
   insertModal.addEventListener('shown.bs.modal',() =>{
     insertInput.focus()
   })
   
+=======
+>>>>>>> 4cb15759e998ee75e27c33208f4cf8def0f11f38
   // Setup modal viewMore
   const viewMore = document.getElementById('viewMore')
 
@@ -38,6 +41,7 @@
   const edit = document.getElementById('edit')
   // const editConfirm = document.getElementById('editConfirm')
 
+<<<<<<< HEAD
   //setup modal insert
   const insert = document.getElementById('insert')
   
@@ -85,13 +89,23 @@
         });
       });
     })
+=======
+  // setup modal insert
+  const insert = document.getElementById('insert')
+  const insertConfirm = document.getElementById('insertConfirm')
+
+  insert.addEventListener('show.bs.modal',event => {
+    const button = event.relatedTarget
+    const id = button.getAttribute('data-bs-whatever')
+
+>>>>>>> 4cb15759e998ee75e27c33208f4cf8def0f11f38
   })
   // add listener
   viewMore.addEventListener('show.bs.modal', event => {
     // Button that triggered the modal
     const button = event.relatedTarget
-    const id = button.getAttribute('data-bs-whatever')
-    // console.log(id)
+    const id = button.getAttribute('data-bs-whatever')    
+    console.log(id)
     $(document).ready(function (e) {
       // e.preventDefault();
       
