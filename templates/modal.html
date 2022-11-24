@@ -52,7 +52,7 @@
         
       {% endblock %}
       $('#insertForm').submit(function (e) { 
-        e.preventDefault();
+        // e.preventDefault();
         console.log('asu');
         $.ajax({
           type: "POST",
@@ -79,7 +79,7 @@
             })
             .then(function () {
               console.log('asu');
-              $('#insert').modal(toggle)
+              $('#insert').modal('hide')
               table.draw(false)
             })
           }
