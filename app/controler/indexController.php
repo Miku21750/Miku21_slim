@@ -89,13 +89,16 @@
                     "LAST_NAME"=>$data_reg['lastName'],
                     "PASSWORD"=>$pass,
                 ]);
-                $inserted_id = $c->db->id();
+                // $inserted_id = $c->db->id();
                 // return var_dump($inserted_id);
-                $c->view->render($rsp, 'login.html',[
-                    'mode'=>"login",
-                    "hasRegistered" => true,
-                    "idReg" => $inserted_id
-                ]);
+                $mode = $_SESSION['mode'] = "login";
+                $hasRegistered = $_SESSION['hasRegistered'] = true;
+                return $rsp->withRedirect('/login');
+                // $c->view->render($rsp, 'login.html',[
+                //     'mode'=>"login",
+                //     "hasRegistered" => true,
+                //     "idReg" => $inserted_id
+                // ]);
             // if exist
             }else{
                 // go back
@@ -153,6 +156,25 @@
                 "ID_CUST"=>$data_edit['id']
             ]);
             // console.log($data_edit);
+        }
+        public static function insert($c,$req,$rsp,$args){
+            $data_insert = $args['data'];
+            // return var_dump($data_insert);
+            $insert = $c->db->insert('tbl_customers',[
+                "CUST_CODE"=>$data_insert['cust_id'],
+                'CUST_NAME'=>$data_insert['cust_fullname'],
+                'WORKING_AREA'=>$data_insert['cust_workingArea'],
+                'CUST_COUNTRY'=>$data_insert['cust_country'],
+                "GRADE"=>$data_insert['grade'],
+                "OPENING_AMT"=>$data_insert['openingAMT'],
+                "RECEIVE_AMT"=>$data_insert['receiveAMT'],
+                "PAYMENT_AMT"=>$data_insert['paymentAMT'],
+                "OUTSTANDING_AMT"=>$data_insert['outstandingAMT'],
+                "PHONE_NO"=>$data_insert['cust_phone'],
+                "AGENT_CODE"=>$data_insert['cust_agent'],
+            ]);
+            // return $response->withJson(array('succes'=> true));
+            // console.log($data_insert);
         }
     }
 ?>
